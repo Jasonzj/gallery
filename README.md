@@ -45,7 +45,7 @@ gallery.setImage([
 |配置项|说明|可选项|含义|默认值|
 |:---:|:---:|:---:|:---:|:---:|
 |layout|布局类型|1<br />2<br />3<br />|拼图布局<br />瀑布布局<br />木桶布局|2|
-|fullScreen|图片点击预览|true<br />false<br />|关闭<br />打开<br />|false|
+|fullScreen|图片点击预览|true<br />false<br />|打开<br />关闭<br />|false|
 |gutter|图片间距|{x: number, y: number}|x：横向间距<br />y：纵向间距|{x: 10, y: 10}|
 |waterfallColumn|瀑布布局列数|正整数|瀑布布局列数|4|
 |barrelHeight|木桶布局最小高度|正整数|最小高度|200|
