@@ -1,11 +1,11 @@
 import React from 'react'
 
-import Gallery from 'components/Gallery'
+import GalleryCon from 'components/GalleryCon'
 
 import './app.scss'
 
 const App = () => (
-    <Gallery />
+    <GalleryCon />
 )
 
 export default App

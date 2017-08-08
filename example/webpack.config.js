@@ -34,7 +34,7 @@ module.exports = {
                 exclude: path.resolve(__dirname, 'node_modules')
             },
             {
-                test: /\.scss$/,
+                test: /\.(css|scss)$/,
                 use:[
                     {
                         loader: 'style-loader'

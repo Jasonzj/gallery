@@ -123,7 +123,7 @@
                 image = [image]
             }
 
-            const imageArr = this.options.images
+            let imageArr = this.options.images
 
             image.forEach(ele => {
                 imageArr = imageArr.filter(img => ele === img)
