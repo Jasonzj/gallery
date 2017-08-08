@@ -23,7 +23,7 @@
             this.options = {
                 layout: 2,                  // 布局类型
                 waterfallColumn: 4,         // 瀑布流布局列数
-                fullScreen: true,           // 是否全屏
+                fullScreen: false,           // 是否全屏
                 puzzleHeight: 600,          // 拼图高度
                 barrelMinHeight: 200,       // 木桶布局最小行高     
                 gutter: { x: 10, y: 10 },   // 木桶布局间距
@@ -123,7 +123,7 @@
                 image = [image]
             }
 
-            const imageArr = this.options.images
+            let imageArr = this.options.images
 
             image.forEach(ele => {
                 imageArr = imageArr.filter(img => ele === img)
@@ -345,6 +345,7 @@
                 return false
             }
             this.options.puzzleHeight = height
+            this.updateLayout()
             return true
         }
 
@@ -407,7 +408,7 @@
          * @param {number} max 最大高度
          */
         setBarrelHeight(min = 200) {
-            if (!Number.isInteger(column) || column < 0) {
+            if (!Number.isInteger(min) || min < 0) {
                 console.error('木桶布局最小高度必须为正整数')
                 return false
             }
