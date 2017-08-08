@@ -7,13 +7,13 @@
 ## 使用方法
 1. 在HTML中引入gallery.min.js和gallery.min.css
 ```html
-    <link rel="stylesheet" href="./gallery.min.css">
-    <script src="./gallery.min.js">
+<link rel="stylesheet" href="./gallery.min.css">
+<script src="./gallery.min.js">
 ```
 
 2. 定义一个根图片容器，并指定类名、宽度(宽度支持百分比)
 ```html
-    <div class="gallery"></div>
+<div class="gallery"></div>
 ```
 ```css
 .gallery {
