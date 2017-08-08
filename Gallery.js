@@ -47,6 +47,18 @@
             
             this.init()
         }
+
+        init() {
+            // 监听屏幕
+            window.onresize = () => {
+                if (this.onresize) {
+                    this.resizeUpdate(200)
+                }
+            }
+            this.bindClickHandle()
+            this.setView()
+        }
+        
     }
 
     return Gallery
