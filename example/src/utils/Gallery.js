@@ -12,7 +12,7 @@
     } else {
         root.Gallery = factory()
     }
-})(this, () => {
+})(window, () => {
 
     'use strict'
 
