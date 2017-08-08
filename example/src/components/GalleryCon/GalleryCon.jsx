@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Gallery from 'utils/Gallery'
 import { getRandomColor, getRandomResize } from 'utils/utils'
 
-import 'utils/Gallery.css'
+import 'utils/Gallery.scss'
 
 class GalleryCon extends Component {
     constructor(props) {
