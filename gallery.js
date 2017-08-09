@@ -285,6 +285,12 @@
                 const rowHeight = conHeight / (total - lastPhoto.ratio)
                 nPhotosWrap.style.height = rowHeight + 'px'
 
+                Array.from(nPhotosDoms)
+                    .forEach((wrap, i, self) => {
+                        if (i === self.length - 1) return false
+                        wrap.style.width = this.nPhotos[i].ratio * rowHeight + 'px'
+                    })
+
                 dom.remove()
                 this.nPhotos = []
                 this.addBox(dom, wid, hei)         

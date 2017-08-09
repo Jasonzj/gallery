@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Gallery from 'utils/Gallery'
+import Gallery from 'utils/gallery.min'
 import { getRandomColor, getRandomResize } from 'utils/utils'
 
 import 'utils/Gallery.scss'
