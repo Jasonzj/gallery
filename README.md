@@ -5,7 +5,7 @@
 [查看Demo](http://www.jasonzj.me/gallery/index.html)
 
 ## 使用方法
-1. 在HTML中引入gallery.min.js和gallery.min.css
+1. 在HTML中引入gallery.min.js和gallery.min.css(压缩文件已使用babel编译成es5语法)
 ```html
 <link rel="stylesheet" href="./gallery.min.css">
 <script src="./gallery.min.js">
