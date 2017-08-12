@@ -4,7 +4,7 @@
  * @Author: Jason 
  */
 
- ;((root, factory) => {
+;((root, factory) => {
     if (typeof define === 'function' && define.amd) {
         define(factory)
     } else if (typeof exports === 'object') {
@@ -126,9 +126,13 @@
             let imageArr = this.options.images
 
             image.forEach(ele => {
-                imageArr = imageArr.filter(img => ele === img)
-                ele.remove()
+                let index = imageArr.indexOf(ele)
+                if (index > 0) {
+                    imageArr.splice(index, 1)
+                }
             })
+
+            this.updateLayout()
         }
 
         /**

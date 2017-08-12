@@ -66,7 +66,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new ExtractTextPlugin('/css/[name]-[chunkhash:6].css'),
+        new ExtractTextPlugin('./css/[name]-[chunkhash:6].css'),
         new htmlWebpackPlugin({
             filename: 'index.html',
             template: 'index.html'
