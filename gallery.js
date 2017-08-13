@@ -526,9 +526,9 @@
                     && e.target.className !== 'gallery-viewImg'
                     && this.options.fullScreen
                 ) {
+                    const index = parseInt(e.target.getAttribute('index'))
                     this.viewImg.src = e.target.src
                     this.view.style.display = 'block'
-                    const index = parseInt(e.target.getAttribute('index'))
                     this.setThumbnail(index)
                 }
                 if (e.target.className === 'gallery-view-close') {
