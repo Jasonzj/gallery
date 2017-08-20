@@ -38,8 +38,7 @@ module.exports = {
                 exclude: path.resolve(__dirname, 'node_modules')
             },
             {
-                test: /\.scss$/,
-                exclude: path.resolve(__dirname, 'node_modules'),
+                test: /\.(css|scss)$/,
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     use: [
