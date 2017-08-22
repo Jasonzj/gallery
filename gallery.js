@@ -184,6 +184,7 @@
         clearLayout() {
             const node = this.galleryBox
             this.imgIndex = 0
+            this.galleryBox.style.height = ''
             if (node) {
                 while (node.firstChild) {
                     node.firstChild.remove()
@@ -226,7 +227,6 @@
          */
         setWaterFall() {
             const col = this.options.waterfallColumn
-            this.galleryBox.style.height = ''
             this.columns = []
 
             for (let i = 0, l = col; i < l; i++) {
