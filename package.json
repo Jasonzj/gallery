@@ -1,5 +1,5 @@
 {
-  "name": "gallery",
+  "name": "j-gallery",
   "version": "0.2.4",
   "description": "a picture layout library",
   "main": "index.js",
@@ -17,7 +17,7 @@
   "keywords": [
     "gallery"
   ],
-  "author": "jason",
+  "author": "jason <Jason925645402@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Jasonzj/Gallery/issues"

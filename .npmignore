@@ -1,0 +1,8 @@
+**/.*
+*.iml
+examples/
+node_modules/
+test/
+gallery.css
+gallery.js
+package-lock.json
