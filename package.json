@@ -1,6 +1,6 @@
 {
   "name": "j-gallery",
-  "version": "0.2.4",
+  "version": "1.0.0",
   "description": "a picture layout library",
   "main": "index.js",
   "directories": {
