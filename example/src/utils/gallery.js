@@ -1,6 +1,6 @@
 /**
  * Gallery
- * Version: v1.1.4
+ * Version: v1.1.5
  * @Author: Jason 
  */
 
@@ -68,9 +68,9 @@
             }
             
             // 初始化图片容器
-            this.galleryBox = document.createElement('div')
-            this.galleryBox.className = 'galleryBox'
-            this.container.appendChild(this.galleryBox)
+            const galleryBox = this.galleryBox = document.createElement('div')
+            galleryBox.className = 'galleryBox'
+            this.container.appendChild(galleryBox)
 
             // 初始布局和图片
             this.addImage(image)
@@ -309,7 +309,7 @@
                     })
 
                 dom.remove()
-                nPhotos = []
+                this.nPhotos = []
                 this.addBox(dom, wid, hei, true)         
             }
         }
@@ -341,9 +341,8 @@
                 
                 case 3:
                     if (!this.nPhotos.length) {
-                        let nPhotosWrap = this.nPhotosWrap
                         const options = this.options
-                        nPhotosWrap = document.createElement('div')
+                        const nPhotosWrap = this.nPhotosWrap = document.createElement('div')
                         nPhotosWrap.className = 'barrelRow'
                         nPhotosWrap.style.marginBottom = options.gutter.y + 'px'
                         nPhotosWrap.style.height = options.barrelMinHeight + 'px'
