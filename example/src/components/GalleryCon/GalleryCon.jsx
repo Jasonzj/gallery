@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { css } from 'j-gallery'
-import Gallery from 'utils/gallery'
+import { Gallery, css } from 'j-gallery'
 import { getRandomColor, getRandomResize } from 'utils/utils'
 
 class GalleryCon extends Component {
