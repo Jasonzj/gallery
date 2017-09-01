@@ -1,6 +1,6 @@
 /**
  * Gallery
- * Version: v1.1.3
+ * Version: v1.1.4
  * @Author: Jason 
  */
 
@@ -68,10 +68,9 @@
             }
             
             // 初始化图片容器
-            let galleryBox = this.galleryBox
-            galleryBox = document.createElement('div')
-            galleryBox.className = 'galleryBox'
-            this.container.appendChild(galleryBox)
+            this.galleryBox = document.createElement('div')
+            this.galleryBox.className = 'galleryBox'
+            this.container.appendChild(this.galleryBox)
 
             // 初始布局和图片
             this.addImage(image)
@@ -477,7 +476,6 @@
          * @memberof Gallery
          */
         setView() {
-            const querySelector = document.querySelector
             const view = `
                 <div class="gallery-view">
                     <span class="gallery-view-close">X</span>
@@ -488,8 +486,8 @@
                 </div>
             `
             this.container.innerHTML += view
-            this.viewImg = querySelector('.gallery-viewImg')
-            this.view = querySelector('.gallery-view')
+            this.viewImg = document.querySelector('.gallery-viewImg')
+            this.view = document.querySelector('.gallery-view')
         }
 
         /**
