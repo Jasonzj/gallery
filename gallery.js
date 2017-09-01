@@ -68,9 +68,10 @@
             }
             
             // 初始化图片容器
-            this.galleryBox = document.createElement('div')
-            this.galleryBox.className = 'galleryBox'
-            this.container.appendChild(this.galleryBox)
+            const galleryBox = this.galleryBox
+            galleryBox = document.createElement('div')
+            galleryBox.className = 'galleryBox'
+            this.container.appendChild(galleryBox)
 
             // 初始布局和图片
             this.addImage(image)
@@ -191,13 +192,15 @@
          */
         clearLayout() {
             const node = this.galleryBox
+            node.style.height = ''
             this.imgIndex = 0
-            this.galleryBox.style.height = ''
+
             if (node) {
                 while (node.firstChild) {
                     node.firstChild.remove()
                 }
             }
+
             this.options.images.forEach(img => {
                 img.style.width = ''
                 img.style.margin = ''
@@ -209,19 +212,20 @@
          * 设置拼图布局
          */
         setPuzzle() {
+            const galleryBox = this.galleryBox
             const images = this.getImageDomElements().slice(0, 6)
             const boxHeight = this.options.puzzleHeight
             const boxWidth = parseInt(window.getComputedStyle(this.container, null).getPropertyValue('width'))
-            this.galleryBox.style.height = this.options.puzzleHeight + 'px'
+            galleryBox.style.height = boxHeight + 'px'
 
             images.forEach((img, i) => {
                 img.className = 'puzzleBox'
                 img.style.height = ''
                 img.firstChild.setAttribute('index', i)
-                this.galleryBox.appendChild(img)
+                galleryBox.appendChild(img)
             })
 
-            this.galleryBox.className = `galleryBox count${images.length}`
+            galleryBox.className = `galleryBox count${images.length}`
 
             if (images.length === 5) {
                 const sizeL = Math.ceil(boxWidth / 3)
@@ -276,6 +280,7 @@
          * @param {HTMLElement} dom 图片dom
          */
         appendBarrel(url, ratio, dom, wid, hei) {
+            const gutterX = this.options.gutter.x
             const nPhotos = this.nPhotos
             const nPhotosWrap = this.nPhotosWrap
             const nPhotosDoms = nPhotosWrap.getElementsByClassName('barrelBox')
@@ -286,7 +291,7 @@
             })
 
             dom.className = 'barrelBox'
-            dom.style.marginRight = this.options.gutter.x + 'px'
+            dom.style.marginRight = gutterX + 'px'
             nPhotosWrap.appendChild(dom)
 
             const total = nPhotos.reduce((a, b) => a + b.ratio, 0)
@@ -294,18 +299,18 @@
             // 超过当前比例
             if (total > this.minRatio) {
                 const lastPhoto = nPhotos.pop()
-                const conHeight = this.galleryBox.clientWidth - ((nPhotos.length - 1) * this.options.gutter.x)
+                const conHeight = this.galleryBox.clientWidth - ((nPhotos.length - 1) * gutterX)
                 const rowHeight = conHeight / (total - lastPhoto.ratio)
                 nPhotosWrap.style.height = rowHeight + 'px'
 
                 Array.from(nPhotosDoms)
                     .forEach((wrap, i, self) => {
                         if (i === self.length - 1) return false
-                        wrap.style.width = this.nPhotos[i].ratio * rowHeight + 'px'
+                        wrap.style.width = nPhotos[i].ratio * rowHeight + 'px'
                     })
 
                 dom.remove()
-                this.nPhotos = []
+                nPhotos = []
                 this.addBox(dom, wid, hei, true)         
             }
         }
@@ -328,19 +333,22 @@
 
                 case 2:
                     const min = this.getMinWaterfallColumn()
+                    const gutter = this.options.gutter
                     box.className = 'waterfallBox'
-                    box.style.borderBottom = this.options.gutter.y + 'px solid transparent'
-                    box.style.borderRight = this.options.gutter.x + 'px solid transparent'
+                    box.style.borderBottom = gutter.y + 'px solid transparent'
+                    box.style.borderRight = gutter.x + 'px solid transparent'
                     min.appendChild(box)
                     break
                 
                 case 3:
                     if (!this.nPhotos.length) {
-                        this.nPhotosWrap = document.createElement('div')
-                        this.nPhotosWrap.className = 'barrelRow'
-                        this.nPhotosWrap.style.marginBottom = this.options.gutter.y + 'px'
-                        this.nPhotosWrap.style.height = this.options.barrelMinHeight + 'px'
-                        this.galleryBox.appendChild(this.nPhotosWrap)
+                        const nPhotosWrap = this.nPhotosWrap
+                        const options = this.options
+                        nPhotosWrap = document.createElement('div')
+                        nPhotosWrap.className = 'barrelRow'
+                        nPhotosWrap.style.marginBottom = options.gutter.y + 'px'
+                        nPhotosWrap.style.height = options.barrelMinHeight + 'px'
+                        this.galleryBox.appendChild(nPhotosWrap)
                     }
                     const ratio = wid / hei
                     this.appendBarrel(box.firstChild.src, ratio, box, wid, hei)
@@ -451,12 +459,14 @@
          * @param {Number} wait 更新周期时间
          */
         resizeUpdate(wait) {
-            if (!this.resizeTimer) {
-                if (this.cacheWidth !== this.container.clientWidth) {   // 如果宽度变化才执行更新
-                    this.resizeTimer = setTimeout(() => {
-                        this.resizeTimer = null
+            const resizeTime = this.resizeTimer
+            if (!resizeTime) {
+                const clientWidth = this.container.clientWidth
+                if (this.cacheWidth !== clientWidth) {   // 如果宽度变化才执行更新
+                    resizeTime = setTimeout(() => {
+                        resizeTime = null
                         this.updateLayout()
-                        this.cacheWidth = this.container.clientWidth
+                        this.cacheWidth = clientWidth
                     }, wait)
                 }
             }
@@ -467,6 +477,7 @@
          * @memberof Gallery
          */
         setView() {
+            const querySelector = document.querySelector
             const view = `
                 <div class="gallery-view">
                     <span class="gallery-view-close">X</span>
@@ -477,8 +488,8 @@
                 </div>
             `
             this.container.innerHTML += view
-            this.viewImg = document.querySelector('.gallery-viewImg')
-            this.view = document.querySelector('.gallery-view')
+            this.viewImg = querySelector('.gallery-viewImg')
+            this.view = querySelector('.gallery-view')
         }
 
         /**
