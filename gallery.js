@@ -1,6 +1,6 @@
 /**
  * Gallery
- * Version: v0.2.2
+ * Version: v1.1.3
  * @Author: Jason 
  */
 
@@ -68,7 +68,7 @@
             }
             
             // 初始化图片容器
-            const galleryBox = this.galleryBox
+            let galleryBox = this.galleryBox
             galleryBox = document.createElement('div')
             galleryBox.className = 'galleryBox'
             this.container.appendChild(galleryBox)
@@ -280,8 +280,8 @@
          * @param {HTMLElement} dom 图片dom
          */
         appendBarrel(url, ratio, dom, wid, hei) {
+            let nPhotos = this.nPhotos
             const gutterX = this.options.gutter.x
-            const nPhotos = this.nPhotos
             const nPhotosWrap = this.nPhotosWrap
             const nPhotosDoms = nPhotosWrap.getElementsByClassName('barrelBox')
 
@@ -342,7 +342,7 @@
                 
                 case 3:
                     if (!this.nPhotos.length) {
-                        const nPhotosWrap = this.nPhotosWrap
+                        let nPhotosWrap = this.nPhotosWrap
                         const options = this.options
                         nPhotosWrap = document.createElement('div')
                         nPhotosWrap.className = 'barrelRow'
@@ -459,7 +459,7 @@
          * @param {Number} wait 更新周期时间
          */
         resizeUpdate(wait) {
-            const resizeTime = this.resizeTimer
+            let resizeTime = this.resizeTimer
             if (!resizeTime) {
                 const clientWidth = this.container.clientWidth
                 if (this.cacheWidth !== clientWidth) {   // 如果宽度变化才执行更新
