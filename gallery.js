@@ -96,7 +96,7 @@
             }
 
             image.forEach(imgUrl => {
-                this.createImage(imgUrl)
+                this.createImage(imgUrl, bool)
             })
         }
 
@@ -104,7 +104,7 @@
          * 创建图片
          * @param {String} url 图片链接
          */
-        createImage(url) {
+        createImage(url, bool) {
             const wrap = document.createElement('div')
             const img = new Image()
             img.src = url
