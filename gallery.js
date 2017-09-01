@@ -95,22 +95,30 @@
                 image = [image]
             }
 
-            image.forEach((imgUrl, i) => {
-                const wrap = document.createElement('div')
-                const img = new Image()
-                img.src = imgUrl
-                wrap.appendChild(img)
-                
-                if (!bool) {
-                    this.options.images.push(wrap)
-                    return false
-                }
-
-                img.onload = () => {
-                    this.options.images.push(wrap)
-                    this.addBox(wrap, img.width, img.height)
-                }
+            image.forEach(imgUrl => {
+                this.createImage(imgUrl)
             })
+        }
+
+        /**
+         * 创建图片
+         * @param {String} url 图片链接
+         */
+        createImage(url) {
+            const wrap = document.createElement('div')
+            const img = new Image()
+            img.src = url
+            wrap.appendChild(img)
+            
+            if (!bool) {
+                this.options.images.push(wrap)
+                return false
+            }
+
+            img.onload = () => {
+                this.options.images.push(wrap)
+                this.addBox(wrap, img.width, img.height)
+            }
         }
 
         /**
