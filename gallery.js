@@ -1,6 +1,6 @@
 /**
  * Gallery
- * Version: v1.1.5
+ * Version: v1.1.6
  * @Author: Jason 
  */
 
@@ -282,7 +282,7 @@
             let nPhotos = this.nPhotos
             const gutterX = this.options.gutter.x
             const nPhotosWrap = this.nPhotosWrap
-            const nPhotosDoms = nPhotosWrap.getElementsByClassName('barrelBox')
+            const nPhotosDoms = nPhotosWrap.querySelectorAll('.barrelBox')
 
             nPhotos.push({
                 url,
@@ -496,7 +496,7 @@
         setThumbnail(index) {
             const wrap = document.querySelector('.gallery-view-list')
             const imgs = this.getImageDomElements()
-            let wrapImgs = wrap.getElementsByTagName('img')
+            let wrapImgs = wrap.querySelectorAll('img')
             let len = imgs.length
 
             // 最多显示5张缩略图
@@ -510,7 +510,7 @@
                     const image = document.createElement('img')
                     wrap.appendChild(image)
                 }
-                wrapImgs = Array.from(wrap.getElementsByTagName('img'))
+                wrapImgs = Array.from(wrap.querySelectorAll('img'))
             }
 
             let imageIndex = index
@@ -525,13 +525,14 @@
             
             // 刷新缩略图列表图片
             for (let i = 0; i < len; i++, imageIndex++) {
-                wrapImgs[i].className = ''
-                wrapImgs[i].src = imgs[imageIndex].firstChild.src
-                wrapImgs[i].setAttribute('index', imageIndex)
+                const currentImg = wrapImgs[i]
+                currentImg.className = ''
+                currentImg.src = imgs[imageIndex].firstChild.src
+                currentImg.setAttribute('index', imageIndex)
 
                 // 高亮当前缩略图
                 if (imageIndex === index) {
-                    wrapImgs[i].classList.add('gallery-view--current')
+                    currentImg.classList.add('gallery-view--current')
                 }
             }
         }
