@@ -1,6 +1,6 @@
 /**
  * Gallery
- * Version: v1.1.7
+ * Version: v1.1.8
  * @Author: Jason 
  */
 
