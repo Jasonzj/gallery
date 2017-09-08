@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "mocha --recursive",
-    "build": "rm -rf dist/*; postcss --use autoprefixer cssnano -o dist/gallery.min.css gallery.css --no-map; babel gallery.js | ./node_modules/.bin/uglifyjs > ./dist/gallery.min.js"
+    "build": "rm -rf dist/*; postcss --use autoprefixer cssnano -o dist/gallery.min.css gallery.css --no-map; babel gallery.js | uglifyjs > ./dist/gallery.min.js"
   },
   "repository": {
     "type": "git",
