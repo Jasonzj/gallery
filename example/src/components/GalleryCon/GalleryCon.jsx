@@ -71,25 +71,15 @@ class GalleryCon extends Component {
         this.gallery.setGutter(gutter.x, gutter.y)
     }
 
-    changeColumn = (num) => {
-        let waterfallColumn = this.state.waterfallColumn
-        waterfallColumn = parseInt(num)
-        this.setState({ waterfallColumn })
-        this.gallery.setWaterfallColumn(waterfallColumn)
-    }
-
-    changeMinHei = (num) => {
-        let barrelMinHeight = this.state.barrelMinHeight
-        barrelMinHeight = parseInt(num)
-        this.setState({ barrelMinHeight })
-        this.gallery.setBarrelHeight(barrelMinHeight)
-    }
-
-    changePuzzleHeight = (num) => {
-        let puzzleHeight = this.state.puzzleHeight
-        puzzleHeight = parseInt(num)
-        this.setState({ puzzleHeight })
-        this.gallery.setPuzzleHeight(puzzleHeight)
+    changeDefault = (num, name) => {
+        const func = {
+            'puzzleHeight': 'setPuzzleHeight',
+            'barrelMinHeight': 'setBarrelHeight',
+            'waterfallColumn': 'setWaterfallColumn'
+        }[name]
+        let key = parseInt(num)
+        this.setState({ [name]: key })
+        this.gallery[func](key)
     }
 
     render() {
@@ -147,7 +137,7 @@ class GalleryCon extends Component {
                             <input
                                 type="number"
                                 value={puzzleHeight}
-                                onChange={e => this.changePuzzleHeight(e.target.value)}
+                                onChange={e => this.changeDefault(e.target.value, 'puzzleHeight')}
                             />
                         </p>
                     }
@@ -174,7 +164,7 @@ class GalleryCon extends Component {
                             <input
                                 type="number"
                                 value={waterfallColumn}
-                                onChange={e => this.changeColumn(e.target.value)}
+                                onChange={e => this.changeDefault(e.target.value, 'waterfallColumn')}
                             />
                         </p>
                     }
@@ -185,7 +175,7 @@ class GalleryCon extends Component {
                             <input
                                 type="number"
                                 value={barrelMinHeight}
-                                onChange={e => this.changeMinHei(e.target.value)}
+                                onChange={e => this.changeDefault(e.target.value, 'barrelMinHeight')}
                             />
                         </p>
                     }
