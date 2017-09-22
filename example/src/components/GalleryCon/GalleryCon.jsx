@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Gallery, css } from 'j-gallery'
 import { getRandomColor, getRandomResize } from 'utils/utils'
+import Drag from 'utils/drag.js'
 
 class GalleryCon extends Component {
     constructor(props) {
@@ -26,6 +27,7 @@ class GalleryCon extends Component {
     }
 
     componentDidMount() {
+        new Drag('control')
         this.gallery = new Gallery('.gallery')
         this.gallery.setImage(this.state.urls, {
             ...this.state
