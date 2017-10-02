@@ -1,4 +1,5 @@
 # Gallery
+[![Build Status](https://travis-ci.org/Jasonzj/Gallery.svg?branch=master)](https://travis-ci.org/Jasonzj/Gallery)
 
 一个使用JS编写的图片库
 
