@@ -1,5 +1,5 @@
 # Gallery
-[![Build Status](https://travis-ci.org/Jasonzj/Gallery.svg?branch=master)](https://travis-ci.org/Jasonzj/Gallery)
+[![Build Status](https://travis-ci.org/Jasonzj/gallery.svg?branch=master)](https://travis-ci.org/Jasonzj/gallery)
 [![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)](https://github.com/Jasonzj/Gallery/blob/master/LICENSE)
 
 一个使用JS编写的图片库
